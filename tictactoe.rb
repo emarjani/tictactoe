@@ -237,14 +237,14 @@ class TicTacToe
 
     #Human Player's Turn
     if isMaximixing 
-      bestScore = 99999999999999999999999999999999999999999999999999
+      bestScore = -99999999999999999999999999999999999999999999999999
       (0..2).each do |i|
         (0..2).each do |j|
           if @board[i][j] == "-"
             @board[i][j] = @human
             score = minimax(@board, depth+1, false)
             @board[i][j] = "-"
-            if score < bestScore 
+            if score > bestScore 
               bestScore = score
             end
           end
@@ -254,14 +254,14 @@ class TicTacToe
 
     #AI player's turn
     else 
-      bestScore = -99999999999999999999999999999999999999999999999999
+      bestScore = 99999999999999999999999999999999999999999999999999
       (0..2).each do |i|
         (0..2).each do |j|
           if @board[i][j] == "-"
             @board[i][j] = @ai
             score = minimax(@board, depth+1, true)
             @board[i][j] = "-"
-            if score > bestScore 
+            if score < bestScore 
               bestScore = score
             end
           end
